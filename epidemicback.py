@@ -9,7 +9,6 @@ class Person:
         self.immune=random()
         self.doctor=False
         self.infected=False
-       # self.timeleft=randint(20,100)
         if self.immune < infection_rate:
             self.infected = True
         elif self.immune >=0.9:
@@ -37,9 +36,6 @@ class Person:
     def get_doctor(self):
         return self.doctor
 
-    #def get_timeleft():
-     #   return self.timeleft
-
 class World:
     def __init__(self, width, depth, population):
         
@@ -55,9 +51,6 @@ class World:
             self.people.append(new_person)
         
     def update_world(self):
-       # for person in self.people:
-        #    if person.timeleft==0:
-         #       self.people.pop(person)
         for person in self.people:
             person.move()
         self.get_crash()
@@ -68,7 +61,6 @@ class World:
     def get_crash(self):
         for i in self.people:
             x1,y1=i.get_location()
-           # i.timeleft-=1
             for j in self.people:
                 x2,y2=j.get_location()
                 if x1<=x2+3 and x1>=x2-3 and y1<=y2+3 and y1>=y2-3:
